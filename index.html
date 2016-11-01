@@ -1257,6 +1257,72 @@
 
 
   
+    <article id="post-AMD和CMD的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/02/AMD和CMD的区别/" class="article-date">
+      <time datetime="2015-06-02T01:10:36.000Z" itemprop="datePublished">2015-06-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/02/AMD和CMD的区别/">AMD 和 CMD 的区别</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="AMD-和-CMD-的区别有哪些？"><a href="#AMD-和-CMD-的区别有哪些？" class="headerlink" title="AMD 和 CMD 的区别有哪些？"></a>AMD 和 CMD 的区别有哪些？</h1><p>RequireJS 遵循的是 AMD（异步模块定义）规范，SeaJS 遵循的是 CMD （通用模块定义）规范”。</p>
+<p>这些规范的目的都是为了 JavaScript 的模块化开发，特别是在浏览器端的。<br>目前这些规范的实现都能达成浏览器端模块化开发的目的。</p>
+<h3 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h3><ol>
+<li><p>对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。CMD 推崇 as lazy as possible.</p>
+</li>
+<li><p>CMD 推崇依赖就近，AMD 推崇依赖前置。看代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// CMD</div><div class="line">define(function(require, exports, module) &#123;</div><div class="line">var a = require(&apos;./a&apos;)</div><div class="line">a.doSomething()</div><div class="line">// 此处略去 100 行</div><div class="line">var b = require(&apos;./b&apos;) // 依赖可以就近书写</div><div class="line">b.doSomething()</div><div class="line">// ... </div><div class="line">&#125;)</div><div class="line"></div><div class="line">// AMD 默认推荐的是</div><div class="line">define([&apos;./a&apos;, &apos;./b&apos;], function(a, b) &#123; // 依赖必须一开始就写好</div><div class="line">a.doSomething()</div><div class="line">// 此处略去 100 行</div><div class="line">b.doSomething()</div><div class="line">...</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>虽然 AMD 也支持 CMD 的写法，同时还支持将 require 作为依赖项传递，但 RequireJS 的作者默认是最喜欢上面的写法，也是官方文档里默认的模块定义写法。</p>
+<ol>
+<li>AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
 </div>
       <footer id="footer">
